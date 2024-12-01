@@ -1,4 +1,4 @@
-const todos = [];
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
 window.onload = () => {
   const formulario = document.getElementById("todo-form");
@@ -23,6 +23,9 @@ window.onload = () => {
     const todoText = todo.value;
     todo.value = "";
     todos.push(todoText);
+    const todoStrings = JSON.stringify(todos);
+    localStorage.setItem('todo', todoStrings);
+    
     render();
   };
 };
